@@ -1,0 +1,16 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: pal-tracker
+spec:
+  rules:
+    - host: review.{DOMAIN}
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: pal-tracker-review
+                port:
+                  number: 8080
